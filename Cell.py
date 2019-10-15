@@ -1,5 +1,5 @@
 class Cell:
-    def __init__(self, x, y, alive):
+    def __init__(self, x, y, alive=True):
         self.x = x
         self.y = y
         self.alive = alive
@@ -23,13 +23,12 @@ class Cell:
             else:
                 cell.init_dead_cell(alive_cells)
                 surroundings.append(cell)
-
         return surroundings
 
     def init_dead_cell(self, alive_positions):
         for cell in self.create_neighbours():
             if cell in alive_positions:
-                self.neighbours = self.neighbours + 1
+                self.neighbours += 1
 
     def create_neighbours(self):
         lambdas = [lambda x, y: Cell(x - 1, y - 1, False),

@@ -1,9 +1,9 @@
 from Cell import *
+from Gui import *
 import re
 import sys
 import os
 import random
-
 
 def clear_screen():
     os.system('clear')
@@ -30,12 +30,10 @@ def create_first_list():
 
 
 def print_cells(positions):
-    clear_screen()
+    gui.reset_screen()
+    gui.draw_grid()
     for cell in positions:
-        if cell.alive:
-            print_there(cell.x + 15, cell.y + 15, "*")
-        else:
-            print_there(cell.x + 15, cell.y + 15, "-")
+        gui.fill_on_position(cell.x, cell.y)
 
 
 def init_all_cells(alive_cells):
@@ -47,18 +45,21 @@ def init_all_cells(alive_cells):
 
 def init_game():
     # positions = create_first_list()
-    cells = [Cell(1, 1, True), Cell(2, 2, True), Cell(3, 1, True), Cell(3, 2, True), Cell(3, 0, True)]
-    print_cells(cells)
-    return cells
+    positions = [Cell(1, 1), Cell(2, 2), Cell(3, 1), Cell(3, 2), Cell(3, 0),
+                 Cell(6, 6), Cell(7, 7), Cell(8, 6), Cell(8, 7), Cell(8, 5)]
+    print_cells(positions)
+    return positions
 
 
-def start_game(cells):
+def start_game(positions):
     while True:
         input()
-        cells = init_all_cells(cells)
-        cells = list(filter(Cell.apply_rules, cells))
-        print_cells(cells)
+        positions = init_all_cells(positions)
+        positions = list(filter(Cell.apply_rules, positions))
+        print_cells(positions)
 
 
+gui = Gui()
+gui.draw_grid()
 cells = init_game()
 start_game(cells)
