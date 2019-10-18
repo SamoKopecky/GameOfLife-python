@@ -7,7 +7,7 @@ import os
 
 
 def coords_from_file(file_name="coords.txt"):
-    regex = lambda x: re.match(r'\d+,\d+', x)
+    regex = lambda x: re.match(r'(\d+),(\d+)', x)
     file = open(file_name, 'r')
     coords = list(filter(regex, file.readlines()))
     coords = create_cell_from_coords(coords)
