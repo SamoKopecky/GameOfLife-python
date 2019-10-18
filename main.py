@@ -1,5 +1,6 @@
 from Cell import *
 from Gui import *
+from Gui import *
 import re
 import sys
 import os
