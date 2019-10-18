@@ -3,7 +3,26 @@ from Gui import *
 import re
 import sys
 import os
-import random
+
+
+def coords_from_file(file_name="coords.txt"):
+    regex = lambda x: re.match(r'(\d+),(\d+)', x)
+    file = open(file_name, 'r')
+    coords = list(filter(regex, file.readlines()))
+    coords = create_cell_from_coords(coords)
+    file.close()
+    return coords
+
+
+def create_cell_from_coords(coords):
+    created_cells = []
+    for row in coords:
+        middle_index = row.index(',')
+        first_num = int(row[0:middle_index])
+        second_num = int(row[middle_index + 1:])
+        created_cells.append(Cell(first_num, second_num))
+    return created_cells
+
 
 def clear_screen():
     os.system('clear')
@@ -12,21 +31,6 @@ def clear_screen():
 def print_there(x, y, text):
     sys.stdout.write("\x1b7\x1b[%d;%df%s\x1b8" % (x, y, text))
     sys.stdout.flush()
-
-
-def create_first_list():
-    print("Enter positions:")
-    pattern = r'(\d+),(\d+)'
-    cords = []
-    while True:
-        input_cords = input()
-        if not re.match(pattern, input_cords):
-            return cords
-
-        middle_index = input_cords.index(',')
-        first_num = int(input_cords[0:middle_index])
-        second_num = int(input_cords[middle_index + 1:])
-        cords.append(Cell(first_num, second_num, True))
 
 
 def print_cells(positions):
@@ -44,9 +48,7 @@ def init_all_cells(alive_cells):
 
 
 def init_game():
-    # positions = create_first_list()
-    positions = [Cell(1, 1), Cell(2, 2), Cell(3, 1), Cell(3, 2), Cell(3, 0),
-                 Cell(6, 6), Cell(7, 7), Cell(8, 6), Cell(8, 7), Cell(8, 5)]
+    positions = coords_from_file()
     print_cells(positions)
     return positions
 
