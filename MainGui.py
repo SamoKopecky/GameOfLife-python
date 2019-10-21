@@ -1,7 +1,7 @@
 import pygame
 
 
-class Gui:
+class MainGui:
     def __init__(self):
         pygame.init()
         self.WHITE = (250, 250, 250)

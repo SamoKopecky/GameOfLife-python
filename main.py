@@ -1,5 +1,5 @@
 from Cell import *
-from Gui import *
+from MainGui import *
 import re
 import sys
 import os
@@ -34,10 +34,10 @@ def print_there(x, y, text):
 
 
 def print_cells(positions):
-    gui.reset_screen()
-    gui.draw_grid()
+    main_gui.reset_screen()
+    main_gui.draw_grid()
     for cell in positions:
-        gui.fill_on_position(cell.x, cell.y)
+        main_gui.fill_on_position(cell.x, cell.y)
 
 
 def init_all_cells(alive_cells):
@@ -61,6 +61,6 @@ def start_game(positions):
         print_cells(positions)
 
 
-gui = Gui()
+main_gui = MainGui()
 cells = init_game()
 start_game(cells)
