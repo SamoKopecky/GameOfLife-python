@@ -9,7 +9,7 @@ class MainGui:
         self.BLACK = (0, 0, 0)
         self.CELL_SIZE = 19
         self.LINE_SIZE = 1
-        self.CELLS_WIDE = 35
+        self.CELLS_WIDE = 50
         self.CELLS_HIGH = 20
         self.LINES_WIDE = self.CELLS_WIDE + self.LINE_SIZE
         self.LINES_HIGH = self.CELLS_HIGH + self.LINE_SIZE

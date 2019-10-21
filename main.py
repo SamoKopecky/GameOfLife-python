@@ -24,10 +24,6 @@ def create_cell_from_coords(coords):
     return created_cells
 
 
-def clear_screen():
-    os.system('clear')
-
-
 def print_there(x, y, text):
     sys.stdout.write("\x1b7\x1b[%d;%df%s\x1b8" % (x, y, text))
     sys.stdout.flush()
