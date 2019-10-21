@@ -1,6 +1,5 @@
 from Cell import *
 from Gui import *
-from Gui import *
 import re
 import sys
 import os
@@ -63,6 +62,5 @@ def start_game(positions):
 
 
 gui = Gui()
-gui.draw_grid()
 cells = init_game()
 start_game(cells)
