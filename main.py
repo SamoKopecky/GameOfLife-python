@@ -51,7 +51,7 @@ def init_game():
 
 def start_game(positions):
     while True:
-        input()
+        # input()
         positions = init_all_cells(positions)
         positions = list(filter(Cell.apply_rules, positions))
         print_cells(positions)
